@@ -6,7 +6,7 @@ def inventory_puppet(info):
             return [(None, "puppet_run_stats")]
 
 # the check function
-def check_puppet(item, params, info):
+def check_puppet_status(item, params, info):
     f = [ l for l in info ]
     line = f[0]
     changed_resources = int(line[0])
@@ -38,5 +38,5 @@ def check_puppet(item, params, info):
 
 # declare the check to Check_MK
 check_info['puppet.status'] = \
-      (check_puppet, "Puppet status", 1, inventory_puppet)
+      (check_puppet_status, "Puppet status", 1, inventory_puppet)
 
