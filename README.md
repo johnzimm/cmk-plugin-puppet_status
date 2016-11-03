@@ -5,10 +5,11 @@ These are components which can monitor puppet client status from check_mk.
 
 There are three files:
 
-* check_puppet.py - a python script that will be run by check_mk-agent, and should be installed
+* puppet_status - a python script that will be run by check_mk-agent, and should be installed
            on any nodes which will be monitored.  This requires PyYAML, and the script itself goes
-           in /usr/lib/check_mk_agent/plugins/check_puppet.py and must be executable.
-           If your puppet state file is not in /var/lib/puppet/state/last_run_summary.yaml you must modify this script.
+           in /usr/share/check-mk-agent/plugins/puppet_status and must be executable.
+           If your puppet state file is not in /opt/puppetlabs/puppet/cache/state/last_run_summary.yaml or 
+           /var/lib/puppet/state/last_run_summary.yaml you must modify this script.
            As you are already using puppet, distribution of these things is left as an exercise to the reader :)
 
 * puppet - the check_mk recipe to parse the output from the python script above. This resides on your nagios
@@ -33,7 +34,7 @@ Finally, when things are in place, run check_mk --checks=puppet.status -I; check
 NOTES
 
 Whatever user account runs your cmk agent script must have read access to your puppet state file (generally in 
-/var/lib/puppet/state/last_run_summary.yaml ). You must have a not-ancient version of puppet for the state file to
+last_run_summary.yaml ). You must have a not-ancient version of puppet for the state file to
 be populated with the data this check requires (this is tested with clients as old as 2.6.9)
 
 Services will go critical if any failures were reported in the run and/or if the freshness threshold is exceeded.

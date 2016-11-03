@@ -1,9 +1,15 @@
 #!/usr/bin/python
 from time import time
 from yaml import load
+import os.path
 
-# if your puppet has a different statefile, modify it here
-STATEFILE = "/var/lib/puppet/state/last_run_summary.yaml"
+# Find the state summary file
+if os.path.isfile("/opt/puppetlabs/puppet/cache/state/last_run_summary.yaml"):
+    STATEFILE = "/opt/puppetlabs/puppet/cache/state/last_run_summary.yaml"
+elif os.path.isfile("/var/lib/puppet/state/last_run_summary.yaml"):
+    STATEFILE = "/var/lib/puppet/state/last_run_summary.yaml"
+else:
+  print 'Unable to locate last_run_summary.yaml'
 
 def main():
     print '<<<puppet>>>'
