@@ -1,0 +1,17 @@
+{'author': u'J.Zimmerman <john.zimm@gmail.com>',
+ 'description': u'Monitor Puppet agent and run status with Check_MK.',
+ 'download_url': 'https://zimm.io/go/puppet_status',
+ 'files': {'agents': [],
+           'checkman': ['puppet_status'],
+           'checks': ['puppet_status'],
+           'doc': [],
+           'inventory': [],
+           'notifications': [],
+           'pnp-templates': [],
+           'web': []},
+ 'name': 'puppet_status',
+ 'title': u'Puppet Status Monitor',
+ 'version': '0.0',
+ 'version.min_required': '1.2.6',
+ 'version.packaged': '1.2.8p13'}
+
